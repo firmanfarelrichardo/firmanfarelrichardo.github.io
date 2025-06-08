@@ -50,19 +50,80 @@ main {
     text-align: center;
 }
 
-.section img {
-    max-width: 200px;
-    border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.cta-button {
+    background-color: #1e90ff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.project {
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.cta-button:hover {
+    background-color: #ff6347;
+}
+
+.timeline {
+    position: relative;
+    margin: 50px auto;
+    padding: 0;
+    max-width: 800px;
+}
+
+.timeline-item {
+    position: relative;
+    padding: 20px 40px;
+    border-left: 2px solid #1e90ff;
+    margin-bottom: 20px;
+}
+
+.timeline-item h2 {
+    font-size: 1.5em;
+    color: #333;
+    margin: 0;
+}
+
+.timeline-item h3 {
+    font-size: 1.2em;
+    color: #1e90ff;
+    margin: 5px 0;
+}
+
+.timeline-item p {
+    font-size: 1em;
+    color: #666;
+    margin: 5px 0;
+}
+
+.timeline-item .circle {
+    position: absolute;
+    left: -10px;
+    top: 20px;
+    width: 20px;
+    height: 20px;
+    background-color: #1e90ff;
+    border-radius: 50%;
+}
+
+.skills-icons img {
+    width: 50px;
+    margin: 10px;
+    transition: transform 0.3s;
+}
+
+.skills-icons img:hover {
+    transform: scale(1.2);
+}
+
+.social-icons img {
+    width: 30px;
+    margin: 10px;
+    transition: transform 0.3s;
+}
+
+.social-icons img:hover {
+    transform: scale(1.2);
 }
 
 footer {

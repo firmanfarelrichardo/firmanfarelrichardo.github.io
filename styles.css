@@ -1,4 +1,3 @@
-/* Futuristic, clean, and professional theme for all components */
 body {
     font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
     margin: 0;
@@ -467,7 +466,6 @@ footer {
     margin-top: 40px;
 }
 
-/* Styles for feedback section */
 #feedback {
     background: linear-gradient(135deg, #7f9dca 30%, #fafdff 100%);
     box-shadow: 0 8px 32px rgba(132, 158, 207, 0.1);
@@ -624,7 +622,6 @@ footer {
     }
 }
 
-/* Enhanced Interactive Elements */
 .interactive {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
@@ -644,7 +641,6 @@ footer {
     animation: slideIn 0.6s ease forwards;
 }
 
-/* Enhanced Button Styles */
 .cta-button, .cv-button, .feedback-button {
     position: relative;
     overflow: hidden;
@@ -674,7 +670,6 @@ footer {
     transform: scale(0.95);
 }
 
-/* Enhanced Project Cards */
 .project {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     perspective: 1000px;
@@ -703,7 +698,6 @@ footer {
     background: rgba(255, 255, 255, 0.95);
 }
 
-/* Enhanced Skills Section */
 .skills-carousel {
     position: relative;
     overflow: hidden;
@@ -735,7 +729,6 @@ footer {
     }
 }
 
-/* Timeline Enhancements */
 .timeline-item {
     opacity: 0;
     transform: translateX(-50px);
@@ -757,7 +750,6 @@ footer {
     100% { box-shadow: 0 0 0 0 rgba(79,140,255,0); }
 }
 
-/* Social Icons Enhancement */
 .social-fixed a {
     transition: transform 0.3s ease;
     display: inline-block;
@@ -775,7 +767,6 @@ footer {
     filter: drop-shadow(0 5px 15px rgba(79,140,255,0.4));
 }
 
-/* Form Enhancement */
 .feedback-form input, .feedback-form textarea {
     transition: all 0.3s ease;
     border: 2px solid transparent;
@@ -789,7 +780,6 @@ footer {
     background: rgba(255, 255, 255, 1);
 }
 
-/* Skills section styling */
 #skills {
     padding: 60px 20px;
     background: linear-gradient(135deg, #7f9dca 30%, #fafdff 100%);
@@ -841,14 +831,189 @@ footer {
     box-shadow: 0 8px 24px rgba(79,140,255,0.2);
 }
 
-@media (max-width: 768px) {
-    .skills-track {
-        gap: 20px;
+@media (max-width: 1200px) {
+    main {
+        width: 95vw;
+        max-width: 100vw;
+        padding-left: 0;
+        padding-right: 0;
     }
-    
+    .project-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 24px;
+        padding: 0 8px;
+    }
+    .about-content {
+        gap: 40px;
+    }
+}
+
+@media (max-width: 900px) {
+    .hero {
+        flex-direction: column;
+        margin-left: 0;
+        gap: 20px;
+        min-height: unset;
+    }
+    .hero-content {
+        text-align: center;
+    }
+    .about-content {
+        flex-direction: column;
+        gap: 24px;
+        align-items: center;
+    }
+    .about-content img {
+        margin: 0 0 24px 0;
+        max-width: 180px;
+    }
+    .about-content p, .about-text {
+        margin: 0;
+        text-align: center;
+    }
+    .cv-button {
+        margin-left: 0;
+        float: none;
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .timeline {
+        padding: 20px 0;
+    }
+    .timeline-item {
+        padding: 20px 10px;
+    }
+    .project-info {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 16px 0 12px 0;
+    }
+    nav ul {
+        gap: 16px;
+    }
+    nav ul li a {
+        font-size: 1rem;
+        padding: 4px 10px;
+    }
+    .section {
+        padding: 32px 0 24px 0;
+        border-radius: 18px;
+        margin-bottom: 18px;
+    }
+    .section-title {
+        font-size: 1.4rem;
+    }
+    .project-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 0 2px;
+    }
+    .project {
+        min-height: 340px;
+        border-radius: 14px;
+    }
+    .project-cover {
+        height: 140px;
+        border-radius: 14px 14px 0 0;
+    }
+    .project-info {
+        border-radius: 0 0 14px 14px;
+        padding: 12px;
+    }
+    .skills-carousel {
+        padding: 10px 0;
+    }
+    .skills-track {
+        gap: 12px;
+        padding: 10px;
+    }
     .skill-icon {
-        width: 60px;
-        height: 60px;
+        width: 48px;
+        height: 48px;
+        padding: 4px;
+    }
+    .about-content img {
+        max-width: 120px;
+    }
+    .timeline {
+        padding: 10px 0;
+    }
+    .timeline-item {
+        padding: 10px 0;
+    }
+}
+
+@media (max-width: 600px) {
+    main {
+        width: 100vw;
+        padding: 0;
+    }
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    .hero-content p {
+        font-size: 1rem;
+    }
+    .about-content p {
+        font-size: 1rem;
+    }
+    .project-info h2 {
+        font-size: 1.1rem;
+    }
+    .project-info p {
+        font-size: 0.95rem;
+    }
+    .skills-track {
+        gap: 8px;
+    }
+    .skill-icon {
+        width: 36px;
+        height: 36px;
+        padding: 2px;
+    }
+    .timeline-item h2 {
+        font-size: 1.1rem;
+    }
+    .timeline-item h3 {
+        font-size: 0.95rem;
+    }
+    .timeline-item p {
+        font-size: 0.9rem;
+    }
+    .timeline-item .circle {
+        width: 16px;
+        height: 16px;
+        border-width: 3px;
+    }
+    .section-title {
+        font-size: 1.1rem;
+    }
+    .cv-button, .cta-button, .feedback-button {
+        font-size: 0.95rem;
+        padding: 8px 16px;
+        border-radius: 7px;
+    }
+    .feedback-form {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 400px) {
+    .project-info {
+        padding: 6px;
+    }
+    .skills-track {
+        gap: 4px;
+    }
+    .skill-icon {
+        width: 24px;
+        height: 24px;
+        padding: 1px;
     }
 }
 

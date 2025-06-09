@@ -9,7 +9,6 @@ document.querySelectorAll('nav ul li a').forEach(anchor => {
     });
 });
 
-// Intersection Observer for scroll animations
 const observerOptions = {
     threshold: 0.2,
     rootMargin: '0px'
@@ -26,13 +25,11 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe timeline items
 document.querySelectorAll('.timeline-item').forEach(item => {
     item.classList.add('slide-in');
     observer.observe(item);
 });
 
-// Add hover effects to skills icons
 const skillsIcons = document.querySelectorAll('.skills-icons img');
 skillsIcons.forEach(icon => {
     icon.addEventListener('mouseover', () => {
@@ -43,7 +40,6 @@ skillsIcons.forEach(icon => {
     });
 });
 
-// Add 3D tilt effect to project cards
 const projectCards = document.querySelectorAll('.project');
 projectCards.forEach(card => {
     card.classList.add('interactive');
@@ -62,22 +58,17 @@ projectCards.forEach(card => {
     card.addEventListener('mouseleave', () => {
         card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
     });
-    
-    // Observe for scroll animations
     observer.observe(card);
 });
 
-// Skills infinite loop animation
 const skillsTrack = document.querySelector('.skills-track');
 
-// Reset animation when it completes
 skillsTrack.addEventListener('animationend', () => {
     skillsTrack.style.animation = 'none';
-    skillsTrack.offsetHeight; // Trigger reflow
+    skillsTrack.offsetHeight; 
     skillsTrack.style.animation = 'slideSkills 20s linear infinite';
 });
 
-// Pause animation on hover
 skillsTrack.addEventListener('mouseenter', () => {
     skillsTrack.style.animationPlayState = 'paused';
 });
@@ -86,7 +77,6 @@ skillsTrack.addEventListener('mouseleave', () => {
     skillsTrack.style.animationPlayState = 'running';
 });
 
-// Feedback form AJAX submit
 const feedbackForm = document.getElementById('feedbackForm');
 if (feedbackForm) {
     feedbackForm.addEventListener('submit', async function(e) {
@@ -118,7 +108,6 @@ if (feedbackForm) {
     });
 }
 
-// Add ripple effect to buttons
 const buttons = document.querySelectorAll('.cta-button, .cv-button, .feedback-button');
 buttons.forEach(button => {
     button.addEventListener('click', function(e) {
@@ -142,27 +131,22 @@ buttons.forEach(button => {
     });
 });
 
-// Add smooth scroll reveal for sections
 document.querySelectorAll('.section').forEach(section => {
     observer.observe(section);
     section.classList.add('slide-in');
 });
 
-// Add floating animation to hero content
 const heroContent = document.querySelector('.hero-content');
 if (heroContent) {
     heroContent.style.animation = 'float 6s ease-in-out infinite';
 }
 
 
-// Enhance skills icons with subtle animations
 document.querySelectorAll('.skill-icon').forEach((icon, index) => {
-    // Add a subtle float animation with different timing for each icon
     const floatDuration = 3 + Math.random();
     icon.style.animation = `float ${floatDuration}s ease-in-out infinite`;
     icon.style.animationDelay = `${index * 0.2}s`;
     
-    // Add hover interaction
     icon.addEventListener('mouseover', () => {
         icon.style.transform = 'translateY(-5px) scale(1.1)';
     });

@@ -202,6 +202,7 @@ main {
     display: inline-flex;
     align-items: center;
     margin-top: 24px;
+    margin-left: 50px;
     padding: 12px 24px;
     background: linear-gradient(135deg, #4f8cff 0%, #23272f 100%);
     color: #fff;
@@ -214,6 +215,8 @@ main {
     box-shadow: 0 4px 24px rgba(79,140,255,0.15);
     position: relative;
     overflow: hidden;
+    float: left;
+    clear: both;
 }
 
 .cv-button::before {
@@ -329,103 +332,109 @@ main {
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     gap: 40px;
-    margin-top: 32px;
+    margin: 32px auto;
+    max-width: 1400px;
+    padding: 0 20px;
 }
 
 /* Futuristic project card with cover image */
 .project {
-    background: rgba(255,255,255,0.8);
+    background: rgba(255,255,255,0.95);
     border-radius: 22px;
     box-shadow: 0 8px 32px rgba(79,140,255,0.15);
-    padding: 0 0 24px 0;
+    padding: 0;
     text-align: left;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: all 0.3s ease;
     backdrop-filter: blur(10px);
     border: 2px solid #c2d8f7;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    overflow: hidden;
-    min-height: 420px;
+    align-items: stretch;
+    overflow: visible;
+    height: auto;
+    min-height: 450px;
 }
 
 .project:hover {
-    transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 12px 40px rgba(79,140,255,0.22);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(79,140,255,0.2);
 }
 
 .project-cover {
     width: 100%;
-    height: 200px;
+    height: 220px;
     background: #e6f0ff;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    border-top-left-radius: 22px;
-    border-top-right-radius: 22px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     border-bottom: 1.5px solid #c2d8f7;
+    flex-shrink: 0;
 }
 
 .project-cover img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s;
+    transition: transform 0.4s ease;
 }
 
 .project:hover .project-cover img {
-    transform: scale(1.07) rotate(-1deg);
+    transform: scale(1.05);
 }
 
 .project-info {
-    padding: 24px 24px 0 24px;
-    width: 100%;
+    padding: 24px;
+    flex: 1;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    border-radius: 22px;
 }
 
 .project-info h2 {
     font-size: 1.35rem;
     color: #23272f;
-    margin: 0 0 4px 10px;
+    margin: 0 0 16px 0;
     font-weight: 700;
 }
 
 .project-info p {
     color: #555;
     font-size: 1.08rem;
-    margin: 10px 10px 0 10px;
+    line-height: 1.6;
+    margin: 0;
     text-align: justify;
+    overflow: visible;
 }
 
 /* Styles for skills carousel */
 .skills-carousel {
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+    position: relative;
+    overflow: hidden;
     padding: 20px 0;
 }
 
 .skills-track {
     display: flex;
     gap: 40px;
-    scroll-snap-align: start;
+    animation: slideSkills 20s linear infinite;
 }
 
 .skill-icon {
-    width: 120px;
-    height: 120px;
-    filter: grayscale(100%);
-    transition: filter 0.3s, transform 0.3s;
+    transition: all 0.3s ease;
+    filter: grayscale(0.5);
 }
 
 .skill-icon:hover {
-    filter: grayscale(0%);
-    transform: scale(1.12);
+    transform: scale(1.2) rotate(5deg);
+    filter: grayscale(0);
 }
 
 .carousel-dots {
@@ -525,10 +534,10 @@ footer {
 
 #feedback .feedback-form input:focus,
 #feedback .feedback-form textarea:focus {
-    outline: none;
     border-color: #4f8cff;
-    background: #fff;
-    box-shadow: 0 0 20px rgba(79,140,255,0.10);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(79,140,255,0.1);
+    background: rgba(255, 255, 255, 1);
 }
 
 #feedback .feedback-form input::placeholder,
@@ -584,5 +593,262 @@ footer {
 @keyframes waveMove {
     0% { background-position-x: 0; }
     100% { background-position-x: 1000px; }
+}
+
+/* Animation Keyframes */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+}
+
+@keyframes tilt {
+    0%, 100% { transform: rotate3d(0); }
+    25% { transform: rotate3d(1, 1, 0, 15deg); }
+    75% { transform: rotate3d(-1, -1, 0, 15deg); }
+}
+
+@keyframes slideIn {
+    from { 
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Enhanced Interactive Elements */
+.interactive {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.interactive:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(79,140,255,0.15);
+}
+
+.slide-in {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.slide-in.visible {
+    animation: slideIn 0.6s ease forwards;
+}
+
+/* Enhanced Button Styles */
+.cta-button, .cv-button, .feedback-button {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.cta-button::before, .cv-button::before, .feedback-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.cta-button:hover::before, .cv-button:hover::before, .feedback-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.cta-button:active, .cv-button:active, .feedback-button:active {
+    transform: scale(0.95);
+}
+
+/* Enhanced Project Cards */
+.project {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    perspective: 1000px;
+}
+
+.project:hover {
+    transform: translateY(-10px) rotate3d(1, 1, 0, 5deg);
+    box-shadow: 0 20px 40px rgba(79,140,255,0.2);
+}
+
+.project-cover img {
+    transition: transform 0.4s ease;
+}
+
+.project:hover .project-cover img {
+    transform: scale(1.05);
+}
+
+.project-info {
+    transform: translateY(0);
+    opacity: 1;
+    transition: all 0.4s ease;
+}
+
+.project:hover .project-info {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+/* Enhanced Skills Section */
+.skills-carousel {
+    position: relative;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+.skills-track {
+    display: flex;
+    gap: 40px;
+    animation: slideSkills 20s linear infinite;
+}
+
+.skill-icon {
+    transition: all 0.3s ease;
+    filter: grayscale(0.5);
+}
+
+.skill-icon:hover {
+    transform: scale(1.2) rotate(5deg);
+    filter: grayscale(0);
+}
+
+@keyframes slideSkills {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Timeline Enhancements */
+.timeline-item {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.6s ease;
+}
+
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.circle {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(79,140,255,0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(79,140,255,0); }
+    100% { box-shadow: 0 0 0 0 rgba(79,140,255,0); }
+}
+
+/* Social Icons Enhancement */
+.social-fixed a {
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.social-fixed a:hover {
+    transform: scale(1.2) rotate(10deg);
+}
+
+.social-fixed img {
+    transition: filter 0.3s ease;
+}
+
+.social-fixed a:hover img {
+    filter: drop-shadow(0 5px 15px rgba(79,140,255,0.4));
+}
+
+/* Form Enhancement */
+.feedback-form input, .feedback-form textarea {
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.feedback-form input:focus, .feedback-form textarea:focus {
+    border-color: #4f8cff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(79,140,255,0.1);
+    background: rgba(255, 255, 255, 1);
+}
+
+/* Skills section styling */
+#skills {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #7f9dca 30%, #fafdff 100%);
+    overflow: hidden;
+}
+
+#skills h1 {
+    margin-bottom: 40px;
+}
+
+.skills-carousel {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+.skills-track {
+    display: flex;
+    gap: 40px;
+    padding: 20px;
+    animation: slideSkills 20s linear infinite;
+    width: fit-content;
+}
+
+.skills-track:hover {
+    animation-play-state: paused;
+}
+
+.skill-icon {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: grayscale(0.2);
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+}
+
+.skill-icon:hover {
+    transform: translateY(-5px) scale(1.1);
+    filter: grayscale(0);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 24px rgba(79,140,255,0.2);
+}
+
+@media (max-width: 768px) {
+    .skills-track {
+        gap: 20px;
+    }
+    
+    .skill-icon {
+        width: 60px;
+        height: 60px;
+    }
 }
 

@@ -155,3 +155,56 @@ document.querySelectorAll('.skill-icon').forEach((icon, index) => {
         icon.style.transform = 'translateY(0) scale(1)';
     });
 });
+
+// Animasi reveal untuk section dan timeline-item
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.section').forEach(section => {
+    revealObserver.observe(section);
+});
+document.querySelectorAll('.timeline-item').forEach(item => {
+    revealObserver.observe(item);
+});
+
+// Hamburger Menu Functionality
+const hamburgerMenu = document.querySelector('.hamburger-menu');
+const navMenu = document.querySelector('nav ul');
+const nav = document.querySelector('nav');
+
+if (hamburgerMenu) {
+    hamburgerMenu.addEventListener('click', () => {
+        hamburgerMenu.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        nav.classList.toggle('active');
+        
+        // Add delay to each menu item
+        const menuItems = navMenu.querySelectorAll('li');
+        menuItems.forEach((item, index) => {
+            item.style.setProperty('--i', index);
+        });
+        
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = hamburgerMenu.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Close menu when clicking a link
+    document.querySelectorAll('nav ul li a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburgerMenu.classList.remove('active');
+            navMenu.classList.remove('active');
+            nav.classList.remove('active');
+            const spans = hamburgerMenu.querySelectorAll('span');
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+            // Enable body scroll again
+            document.body.style.overflow = '';
+        });
+    });
+}

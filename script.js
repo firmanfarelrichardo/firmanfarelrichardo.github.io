@@ -154,19 +154,6 @@ if (heroContent) {
     heroContent.style.animation = 'float 6s ease-in-out infinite';
 }
 
-// Add parallax effect to sections
-window.addEventListener('scroll', () => {
-    document.querySelectorAll('.section').forEach(section => {
-        const speed = 0.1;
-        const rect = section.getBoundingClientRect();
-        const scroll = window.pageYOffset;
-        
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-            const yPos = -(scroll * speed);
-            section.style.backgroundPositionY = `${yPos}px`;
-        }
-    });
-});
 
 // Enhance skills icons with subtle animations
 document.querySelectorAll('.skill-icon').forEach((icon, index) => {

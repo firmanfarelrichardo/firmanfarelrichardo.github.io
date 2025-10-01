@@ -1,9 +1,19 @@
-/* Mengatur font utama dari Google Fonts */
-body {
-    font-family: 'Inter', sans-serif;
+/* --- Pengaturan Global & Variabel Warna Light Mode --- */
+:root {
+    --light-bg: #f8f9fa;
+    --dark-text: #212529;
+    --secondary-text: #6c757d;
+    --border-color: #dee2e6;
+    --primary-color: #0d6efd; /* Kita simpan warna biru untuk aksen hover */
 }
 
-/* --- Pengaturan Sidebar Kustom --- */
+body {
+    background-color: var(--light-bg);
+    font-family: 'Inter', sans-serif;
+    color: var(--dark-text);
+}
+
+/* --- Gaya Sidebar Light Mode --- */
 .sidebar {
     position: fixed;
     top: 0;
@@ -11,82 +21,137 @@ body {
     width: 300px;
     height: 100vh;
     background-color: #ffffff;
-    border-right: 1px solid #dee2e6;
+    border-right: 1px solid var(--border-color);
     z-index: 1000;
 }
 
-/* Navigasi di Sidebar */
+.profile-img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border: 4px solid var(--border-color);
+}
+
 .sidebar .nav-link {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--secondary-text);
+    padding: 12px 20px;
     transition: all 0.2s ease-in-out;
 }
-.sidebar .nav-link:hover,
+
+.sidebar .nav-link:hover {
+    color: var(--primary-color);
+}
+
 .sidebar .nav-link.active {
-    color: #0d6efd !important; /* Menggunakan !important untuk menimpa warna text-muted Bootstrap */
-    transform: translateX(5px);
+    color: var(--primary-color);
+    font-weight: 700;
 }
 
-/* --- Pengaturan Konten Utama --- */
+.sidebar .nav-link i {
+    font-size: 1.1rem;
+    color: #adb5bd;
+    transition: color 0.2s ease;
+}
+.sidebar .nav-link:hover i,
+.sidebar .nav-link.active i {
+    color: var(--primary-color);
+}
+
+.social-icon {
+    color: var(--secondary-text);
+    font-size: 1.2rem;
+    transition: all 0.2s ease;
+}
+.social-icon:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* --- Gaya Konten Utama --- */
 .main-content {
-    /* Memberi ruang kosong di kiri seukuran sidebar */
-    margin-left: 300px; 
+    margin-left: 300px;
 }
 
-/* Membuat semua section setidaknya setinggi layar */
 section {
     min-height: 100vh;
-    display: flex;
-    align-items: center; /* Vertically center content in sections */
+    padding: 80px 0;
+    display: flex; /* Untuk perataan vertikal */
+    align-items: center; /* Untuk perataan vertikal */
 }
 
-/* --- Gaya Kustom untuk Section Home --- */
+.section-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+
+/* --- Gaya Section Home (Layout Kolom) --- */
 #home {
-    min-height: 100vh; /* Memastikan section home selalu penuh */
+    background-color: #ffffff;
 }
 
-.intro-image-container {
-    height: 100vh;
+.hero-image-container {
+    height: 100vh; /* Membuat container gambar setinggi layar */
+    overflow: hidden;
 }
 
-.intro-image-container img {
+.hero-image {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Membuat gambar menutupi area tanpa distorsi */
+    object-fit: cover; /* Gambar menutupi container tanpa distorsi */
+    object-position: center;
 }
 
+
 /* --- ATURAN RESPONSIVE --- */
-/* Untuk layar di bawah 992px (breakpoint 'lg' Bootstrap) */
 @media (max-width: 991.98px) {
     .sidebar {
-        /* Sidebar menjadi header di layar kecil */
         position: relative;
         width: 100%;
         height: auto;
         border-right: none;
-        border-bottom: 1px solid #dee2e6;
+        border-bottom: 1px solid var(--border-color);
     }
 
     .main-content {
-        /* Hapus margin kiri karena sidebar sudah di atas */
         margin-left: 0;
     }
 
-    body {
-        /* Ubah arah flex container menjadi kolom */
-        flex-direction: column;
+    section {
+        min-height: auto;
+        padding: 60px 20px;
     }
 
-    section, #home {
-        min-height: auto; /* Tinggi section tidak lagi 100vh, tapi otomatis */
-        padding-top: 4rem;
-        padding-bottom: 4rem;
+    .display-2 {
+        font-size: 3rem;
     }
 
-    .intro-image-container {
-        height: 50vh; /* Tinggi gambar di perangkat mobile */
+    /* Mengubah urutan di mobile: gambar di atas, teks di bawah */
+    #home .row {
+        display: flex;
+        flex-direction: column-reverse;
     }
-
-    /* Teks menjadi di tengah pada layar kecil */
-    .intro-text {
+    
+    .hero-image-container {
+        height: 50vh;
+        margin-bottom: 2rem;
+    }
+    
+    #home .intro-text {
         text-align: center;
     }
 }

@@ -1,10 +1,11 @@
-/* --- Pengaturan Global & Variabel Warna Light Mode --- */
+/* --- Global Settings & Monochrome Color Variables --- */
 :root {
     --light-bg: #f8f9fa;
     --dark-text: #212529;
     --secondary-text: #6c757d;
     --border-color: #dee2e6;
-    --primary-color: #0d6efd; /* Kita simpan warna biru untuk aksen hover */
+    --white-color: #ffffff;
+    --soft-gray-bg: #e3e3e3; /* Menambahkan variabel baru untuk soft gray */
 }
 
 body {
@@ -13,14 +14,14 @@ body {
     color: var(--dark-text);
 }
 
-/* --- Gaya Sidebar Light Mode --- */
+/* --- Sidebar Styles (Monochrome - Final) --- */
 .sidebar {
     position: fixed;
     top: 0;
     left: 0;
     width: 300px;
     height: 100vh;
-    background-color: #ffffff;
+    background-color: var(--white-color);
     border-right: 1px solid var(--border-color);
     z-index: 1000;
 }
@@ -32,44 +33,56 @@ body {
     border: 4px solid var(--border-color);
 }
 
+#typed-text {
+    color: var(--dark-text);
+}
+.typed-cursor {
+    color: var(--dark-text);
+}
+
 .sidebar .nav-link {
     font-size: 0.95rem;
     font-weight: 500;
-    color: var(--secondary-text);
+    color: #888;
     padding: 12px 20px;
+    border-radius: 0.5rem;
     transition: all 0.2s ease-in-out;
 }
 
+/* --- PERUBAHAN DI SINI --- */
 .sidebar .nav-link:hover {
-    color: var(--primary-color);
+    color: var(--dark-text); /* Teks menjadi hitam saat hover */
+    background-color: var(--soft-gray-bg); /* Latar menjadi soft gray */
 }
 
 .sidebar .nav-link.active {
-    color: var(--primary-color);
-    font-weight: 700;
+    color: var(--dark-text); /* Teks menjadi hitam saat aktif */
+    background-color: var(--soft-gray-bg); /* Latar menjadi soft gray */
+    font-weight: 500;
 }
 
 .sidebar .nav-link i {
     font-size: 1.1rem;
-    color: #adb5bd;
+    color: #ccc;
     transition: color 0.2s ease;
 }
+
 .sidebar .nav-link:hover i,
 .sidebar .nav-link.active i {
-    color: var(--primary-color);
+    color: var(--dark-text); /* Ikon menjadi hitam saat hover/aktif */
 }
 
 .social-icon {
-    color: var(--secondary-text);
+    color: #aaa;
     font-size: 1.2rem;
     transition: all 0.2s ease;
 }
 .social-icon:hover {
-    color: var(--primary-color);
+    color: var(--dark-text);
     transform: translateY(-2px);
 }
 
-/* --- Gaya Konten Utama --- */
+/* --- Main Content Styles --- */
 .main-content {
     margin-left: 300px;
 }
@@ -77,9 +90,14 @@ body {
 section {
     min-height: 100vh;
     padding: 80px 0;
-    display: flex; /* Untuk perataan vertikal */
-    align-items: center; /* Untuk perataan vertikal */
+    display: flex;
+    align-items: center;
 }
+
+section.bg-white {
+    background-color: var(--white-color);
+}
+
 
 .section-title {
     font-family: 'Poppins', sans-serif;
@@ -95,29 +113,29 @@ section {
     left: 0;
     width: 50px;
     height: 3px;
-    background-color: var(--primary-color);
+    background-color: var(--dark-text);
 }
 
 
-/* --- Gaya Section Home (Layout Kolom) --- */
+/* --- Home Section Styles (Column Layout) --- */
 #home {
-    background-color: #ffffff;
+    background-color: var(--white-color);
 }
 
 .hero-image-container {
-    height: 100vh; /* Membuat container gambar setinggi layar */
+    height: 100vh;
     overflow: hidden;
 }
 
 .hero-image {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Gambar menutupi container tanpa distorsi */
+    object-fit: cover;
     object-position: center;
 }
 
 
-/* --- ATURAN RESPONSIVE --- */
+/* --- RESPONSIVE RULES --- */
 @media (max-width: 991.98px) {
     .sidebar {
         position: relative;
@@ -140,7 +158,6 @@ section {
         font-size: 3rem;
     }
 
-    /* Mengubah urutan di mobile: gambar di atas, teks di bawah */
     #home .row {
         display: flex;
         flex-direction: column-reverse;

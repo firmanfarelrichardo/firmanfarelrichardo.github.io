@@ -1,31 +1,21 @@
 /**
- * Inisialisasi Typed.js untuk animasi teks ketik
+ * Initialize Typed.js for the typing animation in the sidebar
  */
 const typed = new Typed('#typed-text', {
+    // Strings to type
     strings: ['Fullstack Developer', 'AI Enthusiast', 'Problem Solver'],
+    // Typing speed
     typeSpeed: 50,
+    // Backspacing speed
     backSpeed: 30,
+    // Delay before starting to backspace
     backDelay: 2000,
+    // Loop the animation
     loop: true
 });
 
 /**
- * Inisialisasi Bootstrap ScrollSpy pada elemen body
- * Ini akan secara otomatis memperbarui navigasi sidebar berdasarkan posisi scroll.
+ * Bootstrap's ScrollSpy is automatically initialized
+ * via data-bs-spy="scroll" attribute in the <body> tag.
+ * No additional JS is needed for its basic functionality.
  */
-// Kode ini sebenarnya tidak perlu ditulis karena Bootstrap sudah otomatis
-// mengaktifkan ScrollSpy melalui atribut data-* di HTML (data-bs-spy="scroll").
-// Namun, jika diperlukan kustomisasi, bisa dilakukan di sini.
-// Contoh:
-// const scrollSpy = new bootstrap.ScrollSpy(document.body, {
-//   target: '#main-nav'
-// })
-
-
-/**
- * Mengatur tahun sekarang di footer (jika ada)
- */
-const yearSpan = document.getElementById('year');
-if (yearSpan) {
-    yearSpan.textContent = new Date().getFullYear();
-}

@@ -2,20 +2,36 @@
  * Initialize Typed.js for the typing animation in the sidebar
  */
 const typed = new Typed('#typed-text', {
-    // Strings to type
     strings: ['Fullstack Developer', 'AI Enthusiast', 'Problem Solver'],
-    // Typing speed
     typeSpeed: 50,
-    // Backspacing speed
     backSpeed: 30,
-    // Delay before starting to backspace
     backDelay: 2000,
-    // Loop the animation
     loop: true
 });
 
+
 /**
- * Bootstrap's ScrollSpy is automatically initialized
- * via data-bs-spy="scroll" attribute in the <body> tag.
- * No additional JS is needed for its basic functionality.
+ * Scroll Animation using Intersection Observer
+ * Adds a 'is-visible' class to elements when they enter the viewport.
  */
+const animatedElements = document.querySelectorAll('.animate-on-scroll');
+
+const observer = new IntersectionObserver((entries) => {
+    // Loop over the entries
+    entries.forEach(entry => {
+        // If the element is visible
+        if (entry.isIntersecting) {
+            // Add the 'is-visible' class
+            entry.target.classList.add('is-visible');
+            // Stop observing the element after it has become visible
+            observer.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.1 // Trigger when 10% of the element is visible
+});
+
+// Tell the observer which elements to track
+animatedElements.forEach(element => {
+    observer.observe(element);
+});

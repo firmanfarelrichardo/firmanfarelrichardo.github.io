@@ -259,26 +259,26 @@ section.bg-white {
 }
 
 
-/* --- PORTFOLIO SECTION STYLES --- */
+/* --- PORTFOLIO SECTION STYLES (DIPERBARUI) --- */
 .portfolio-card {
     position: relative;
     border-radius: 0.5rem;
-    overflow: hidden; /* Penting untuk efek zoom dan overlay */
+    overflow: hidden;
     border: 1px solid var(--border-color);
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     cursor: pointer;
-    height: 300px; /* Memberi tinggi yang konsisten untuk setiap kartu */
+    height: 300px;
 }
 
 .portfolio-card img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Memastikan gambar memenuhi kartu tanpa distorsi */
+    object-fit: cover;
     transition: transform 0.4s ease-out;
 }
 
 .portfolio-card:hover img {
-    transform: scale(1.05); /* Efek zoom-in pada gambar saat hover */
+    transform: scale(1.05);
 }
 
 .portfolio-overlay {
@@ -289,14 +289,14 @@ section.bg-white {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; /* Konten dimulai dari bawah */
+    justify-content: flex-end;
     
-    /* Efek Glassmorphism */
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px); /* Untuk support Safari */
+    /* --- PERUBAHAN UTAMA DI SINI --- */
+    /* Efek Glassmorphism yang lebih terang dan buram */
+    background: rgba(255, 255, 255, 0.7); /* Latar putih semi-transparan */
+    backdrop-filter: blur(10px); /* Efek blur lebih kuat */
+    -webkit-backdrop-filter: blur(10px);
     
-    /* Transisi untuk overlay */
     opacity: 0;
     transform: translateY(100%);
     transition: opacity 0.4s ease-out, transform 0.4s ease-out;
@@ -304,7 +304,7 @@ section.bg-white {
 
 .portfolio-card:hover .portfolio-overlay {
     opacity: 1;
-    transform: translateY(0); /* Overlay muncul dari bawah */
+    transform: translateY(0);
 }
 
 .portfolio-content {
@@ -314,7 +314,6 @@ section.bg-white {
 }
 
 .portfolio-content > * {
-    /* Animasi staggered untuk konten di dalam overlay */
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.4s ease-out, transform 0.4s ease-out;
@@ -323,17 +322,17 @@ section.bg-white {
 .portfolio-card:hover .portfolio-title {
     opacity: 1;
     transform: translateY(0);
-    transition-delay: 0.15s; /* Judul muncul lebih dulu */
+    transition-delay: 0.15s;
 }
 .portfolio-card:hover .portfolio-description {
     opacity: 1;
     transform: translateY(0);
-    transition-delay: 0.25s; /* Deskripsi muncul setelah judul */
+    transition-delay: 0.25s;
 }
 .portfolio-card:hover .portfolio-tags {
     opacity: 1;
     transform: translateY(0);
-    transition-delay: 0.35s; /* Tags muncul terakhir */
+    transition-delay: 0.35s;
 }
 
 .portfolio-title {
@@ -341,17 +340,19 @@ section.bg-white {
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
+    color: var(--dark-text); /* Memastikan teks tetap hitam pekat */
 }
 
 .portfolio-description {
     font-size: 0.85rem;
     margin-bottom: 1rem;
     line-height: 1.6;
+    color: #343a40; /* Sedikit lebih lembut dari hitam pekat */
 }
 
 .portfolio-tags span {
     display: inline-block;
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(0, 0, 0, 0.08); /* Latar tag sedikit lebih gelap */
     color: var(--dark-text);
     padding: 0.25em 0.6em;
     border-radius: 0.25rem;
@@ -518,3 +519,75 @@ section.bg-white {
 }
 
 
+/* --- EDUCATION SECTION STYLES --- */
+.education-list {
+    position: relative;
+    padding-left: 3rem; /* Memberi ruang untuk garis dan ikon */
+}
+
+/* Garis vertikal yang menghubungkan jenjang pendidikan */
+.education-list::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 2px;
+    height: calc(100% - 15px);
+    background-color: var(--border-color);
+}
+
+.education-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+}
+
+.education-icon-wrapper {
+    position: absolute;
+    left: -3rem; /* Posisi ikon di sebelah kiri, sejajar dengan garis */
+    top: 5px;
+    width: 32px;
+    height: 32px;
+    background-color: var(--soft-gray-bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--dark-text);
+}
+
+.education-content {
+    background-color: var(--white-color);
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+}
+
+.education-date {
+    font-size: 0.85rem;
+    color: var(--secondary-text);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.education-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.education-institution {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.education-details {
+    font-size: 0.9rem;
+    color: var(--secondary-text);
+    margin-bottom: 0;
+}
+
+/* Memberi delay pada item kedua untuk efek animasi cascading */
+.education-item:nth-child(2).animate-on-scroll {
+    transition-delay: 0.2s;
+}
